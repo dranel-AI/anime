@@ -31,7 +31,7 @@ const App = () => {
   return (
     <>
       <Container class="p-5 bg-danger text-white">
-        <h1 className="header">find your favorite anime</h1>
+        <h1 className="header text-white">find your favorite anime</h1>
         <SearchAnime onClick={submit} />
       </Container>
       <Container className="d-flex justify-content-center flex-wrap p-3 min-vh-100">
