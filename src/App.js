@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Container, Jumbotron } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import SearchAnime from './components/SearchAnime';
 import DisplayAnime from './components/DisplayAnime';
+import Footer from './components/footer';
 import JikanJS from "jikanjs";
-
-import './App.css'
 
 const App = () => {
   const [title, setTitle] = useState('');
@@ -30,15 +29,16 @@ const App = () => {
   useEffect(fetchBusinesses, [title]);
 
   return (
-    <div className="App">
-      <Container className="p-3">
-        <Jumbotron>
-          <h1 className="header">find your favorite anime</h1>
-          <SearchAnime onClick={submit} />
-        </Jumbotron>
-        {Object.keys(result).length > 0 && <DisplayAnime results={result}/>}
+    <>
+      <Container class="p-5 bg-danger text-white">
+        <h1 className="header">find your favorite anime</h1>
+        <SearchAnime onClick={submit} />
       </Container>
-    </div>
+      <Container className="d-flex justify-content-center flex-wrap p-3 min-vh-100">
+        {(Object.keys(result).length > 0) && <DisplayAnime results={result}/>}
+      </Container>
+      <Footer />
+    </>
   );
 }
 

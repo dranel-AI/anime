@@ -1,4 +1,5 @@
 import { InputGroup, Button, FormControl } from "react-bootstrap";
+import { BsSearch } from "react-icons/bs";
 
 const SearchAnime = ({ onClick }) => {
     return (
@@ -9,8 +10,8 @@ const SearchAnime = ({ onClick }) => {
                 aria-describedby="search bar"
                 id="searchBar"
             />
-            <Button variant="success" id="button-addon2" onClick={onClick}>
-                Go
+            <Button variant="primary" id="button-addon2" onClick={onClick}>
+                 <BsSearch />
             </Button>
         </InputGroup>
     )

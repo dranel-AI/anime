@@ -4,5 +4,17 @@
 }
   
 html, body { 
-    background: #55c7ed;
+    background: url(./wallpaper.gif) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.header {
+    text-align: center;
+}
+  
+main {
+    height: 80%;
 }
