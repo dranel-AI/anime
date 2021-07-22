@@ -1,16 +1,16 @@
 import { InputGroup, Button, FormControl } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 
-const SearchAnime = ({ onClick }) => {
+const SearchAnime = ({ searchInput, onClick }) => {
     return (
-        <InputGroup className="mb-3" size="lg">
+        <InputGroup className="mb-3 inputbar" size="lg">
             <FormControl
+                ref={searchInput}
                 placeholder="Search for an anime, e.g One Piece"
                 aria-label="Search for an anime, e.g One Piece"
                 aria-describedby="search bar"
-                id="searchBar"
             />
-            <Button variant="primary" id="button-addon2" onClick={onClick}>
+            <Button variant="primary" onClick={onClick}>
                  <BsSearch />
             </Button>
         </InputGroup>

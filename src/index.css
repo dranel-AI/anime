@@ -11,10 +11,6 @@ html, body {
     background-size: cover;
 }
 
-.header {
-    text-align: center;
-}
-  
-main {
-    height: 80%;
+.inputbar {
+    max-width: 600px;
 }

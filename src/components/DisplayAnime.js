@@ -4,9 +4,9 @@ const DisplayAnime = ({ results }) => {
     return (
         <>
             {
-                results.results.map((result) => (
-                    <ListGroup.Item variant="primary">
-                        <Card style={{ width: '18rem' }} class="m-5">
+                results.results.map((result, i) => (
+                    <ListGroup.Item variant="primary" key={i}>
+                        <Card style={{ width: '18rem' }} className="m-3">
                             <Card.Img variant="top" src={result.image_url} style={{maxHeight: 250}}/>
                             <Card.Body>
                                 <Card.Title>{result.title}</Card.Title>

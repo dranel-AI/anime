@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Container } from 'react-bootstrap';
 import SearchAnime from './components/SearchAnime';
 import DisplayAnime from './components/DisplayAnime';
@@ -7,35 +7,32 @@ import JikanJS from "jikanjs";
 
 const App = () => {
   const [title, setTitle] = useState('');
-  const [result, setResult] = useState({});
+  const [results, setResults] = useState({});
+  const searchInput = useRef();
 
   const submit = () => {
-    const searchBar = document.querySelector('#searchBar');
-    setTitle(searchBar.value)
+    setTitle(searchInput.current.value)
   }
 
   const fetchBusinesses = () => {
     const fetchData = async () => {
-      try {
-        const res = await JikanJS.search("anime", title);
-        setResult(res);
-      } catch (err) {
-        console.log(err);
+      if(title.length > 3) {
+        setResults(await JikanJS.search("anime", title));
       }
     };
     fetchData();
   };
 
-  useEffect(fetchBusinesses, [title]);
+  useEffect(fetchBusinesses);
 
   return (
     <>
-      <Container class="p-5 bg-danger text-white">
-        <h1 className="header text-white">find your favorite anime</h1>
-        <SearchAnime onClick={submit} />
+      <Container fluid className="p-4 bg-danger">
+        <h1 style={{color: '#28d4e0'}}>find your favorite anime</h1>
+        <SearchAnime searchInput={searchInput} onClick={submit} />
       </Container>
       <Container className="d-flex justify-content-center flex-wrap p-3 min-vh-100">
-        {(Object.keys(result).length > 0) && <DisplayAnime results={result}/>}
+        {Object.keys(results).length > 0 && <DisplayAnime results={results}/>}
       </Container>
       <Footer />
     </>
